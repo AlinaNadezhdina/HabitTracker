@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:HabitTracker.App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HabitTracker.App.Views.HabitCheckListView"
+             x:DataType="viewModels:HabitCheckListViewModel">
+    <DockPanel>
+        <StackPanel 
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+            
+            <TextBlock Text="{Binding Habit.Title}" Margin="10 10 10 10"/>
+            <ScrollViewer MaxHeight="500" >
+            <ItemsControl Items="{Binding Days}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+                            <CheckBox Content="{Binding CurrentDate, StringFormat='{}{0:dd/MM/yyyy}'}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Checked" Margin="10 0 0 0"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="5"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            </ScrollViewer>
+            <Button DockPanel.Dock="Bottom" Content="Finish" Width="100" Margin="0 10 0 0" Command="{Binding $parent[Window].((viewModels:MainWindowViewModel)DataContext).FinishCommand}"/>
+            
+        </StackPanel>
+    </DockPanel>
+</UserControl>
+

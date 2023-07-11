@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:HabitTracker.App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HabitTracker.App.Views.HabitView"
+             x:DataType="viewModels:HabitViewModel">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="10">
+            <TextBlock  HorizontalAlignment="Left" Margin="0,10,0,4">
+                Set a habit to track:
+            </TextBlock> <TextBox  Text="{Binding Path =Title}"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="0,10,0,4">
+                What would be a motivation:
+                </TextBlock> <TextBox Text="{Binding Path =Motivation}"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="0,10,0,4">
+                When you will start:
+            </TextBlock> <DatePicker  SelectedDate="{Binding StartDate, Mode=TwoWay }"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="0,10,0,4">
+                How many days you want to challenge yourself for:
+            </TextBlock> <NumericUpDown Minimum="1" Maximum="365" Value="{Binding TrackingDaysNumber }"/>
+            <Button IsEnabled= "{Binding StartButtonEnable}" Content="Let's start" Command="{Binding $parent[Window].((viewModels:MainWindowViewModel)DataContext).StartCommand}" Width="100"  Margin="0,20,0,4"></Button>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
