@@ -1,9 +1,7 @@
 using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using HabitTracker.App.ViewModels;
 using HabitTracker.Data;
 using System.Linq;
@@ -41,17 +39,15 @@ public partial class HabitCheckListView : UserControl
         using (var db = new HabitDbContext()) 
         {
             var habitCheck = db.HabitChecks?.FirstOrDefault(b => b.CurrentDate == date);
-
-            if(checkBox.IsChecked == true) 
+			if (habitCheck != null)
             {
-                if (habitCheck != null)
+                habitCheck.CurrentDate = date;
+                if (checkBox.IsChecked != null)
                 {
-                    habitCheck.CurrentDate = date;
-                    habitCheck.IsChecked = true;
+                    habitCheck.IsChecked = (bool)checkBox.IsChecked;
                 }
-
-                db.SaveChanges();
             }
+			db.SaveChanges();
 
             var fin = db.Habits?.FirstOrDefault();
             if (fin != null && checkBox.IsChecked == true && date == viewModel.EndDate)

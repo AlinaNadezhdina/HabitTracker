@@ -27,14 +27,12 @@ namespace HabitTracker.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Motivation")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TrackingDaysNumber")

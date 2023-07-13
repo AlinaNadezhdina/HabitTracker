@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HabitTracker.Data.Migrations
 {
     [DbContext(typeof(HabitDbContext))]
-    [Migration("20230710101742_InitialCreate")]
+    [Migration("20230712132851_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,14 +30,12 @@ namespace HabitTracker.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Motivation")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TrackingDaysNumber")

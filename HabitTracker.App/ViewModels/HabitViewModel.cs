@@ -30,26 +30,14 @@ public class HabitViewModel : ViewModelBase
 	public DateTimeOffset StartDate 
 	{
 		get => _startDate.DateTime;
-		set
-		{
-			var trtr = this.RaiseAndSetIfChanged(ref _startDate, value.DateTime);
-			Console.WriteLine(_startDate);
-		}
+		set => this.RaiseAndSetIfChanged(ref _startDate, value.DateTime);
 	}
 	
-
     private int _trackingDaysNumber;
     public int TrackingDaysNumber
     {
         get => _trackingDaysNumber;
         set => this.RaiseAndSetIfChanged( ref _trackingDaysNumber, value);  
-    }
-
-    private bool _isFinished;
-    public bool IsFinished
-    {
-	    get => _isFinished;
-	    set =>this.RaiseAndSetIfChanged( ref _isFinished, value);
     }
     
     public HabitViewModel()

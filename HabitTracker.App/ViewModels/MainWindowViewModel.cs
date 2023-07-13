@@ -21,7 +21,7 @@ public class MainWindowViewModel : ViewModelBase
         var habit = context.Habits.FirstOrDefault(x => x.IsFinished);
         if (habit != null)
         {
-			SetContentToFinishViewModel(context);
+			SetContentToCongratulationsViewModel(context);
         }
         else
         {
@@ -54,36 +54,14 @@ public class MainWindowViewModel : ViewModelBase
 
     public void StartCommand()
     {
-        // using (var db = new HabitDbContext()) 
-		// {
-        //     var countDays = this.HabitViewModel.TrackingDaysNumber;
-        // 	var habit = new Habit(this.HabitViewModel.Title, this.HabitViewModel.Motivation, this.HabitViewModel.StartDate,
-        //     this.HabitViewModel.TrackingDaysNumber);
-        // 	habit.DaysList  = new List<HabitCheck>(countDays);
-        
-		// 	for (int i = 0; i < countDays; i++)
-		// 	{
-		// 		habit.DaysList.Add(new HabitCheck(habit.StartDate.AddDays((double)i), false));
-		// 	}
-		// 	db.Add(habit);
-		// 	db.SaveChanges();
-		// }
 		var habit = this.HabitViewModel.SaveChanges();
 
 		HabitCheckListViewModel  = new HabitCheckListViewModel(habit.DaysList );
 		HabitCheckListViewModel.Habit = habit;
 		Content = HabitCheckListViewModel;
-        
     }
-    public void FinishCommand()
-    {
-		using (var context = new HabitDbContext())
-		{
-			SetContentToFinishViewModel(context);
-		}
- 	}
 
-	private void SetContentToFinishViewModel(HabitDbContext context)
+	private void SetContentToCongratulationsViewModel(HabitDbContext context)
 	{ 
 		var days = context.HabitChecks.Where(b => b.HabitId == 1).ToList();
 		var motivation = context.Habits.FirstOrDefault(b => b.Id == 1).Motivation;

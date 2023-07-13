@@ -17,7 +17,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="0 0 0 1">
-                            <CheckBox Content="{Binding CurrentDate, StringFormat='{}{0:dd/MM/yyyy}'}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Checked" Margin="10 0 0 0"/>
+                            <CheckBox Content="{Binding CurrentDate, StringFormat='{}{0:dd/MM/yyyy}'}" IsThreeState="False" IsChecked="{Binding IsChecked}" Unchecked="CheckBox_Checked"  Checked="CheckBox_Checked" Margin="10 0 0 0"/>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -27,9 +27,7 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-            </ScrollViewer>
-            <Button DockPanel.Dock="Bottom" Content="Finish" Width="100" Margin="0 10 0 0" Command="{Binding $parent[Window].((viewModels:MainWindowViewModel)DataContext).FinishCommand}"/>
-            
+            </ScrollViewer>            
         </StackPanel>
     </DockPanel>
 </UserControl>

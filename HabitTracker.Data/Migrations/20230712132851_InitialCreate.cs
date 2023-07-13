@@ -17,8 +17,8 @@ namespace HabitTracker.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: false),
-                    Motivation = table.Column<string>(type: "TEXT", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", nullable: true),
+                    Motivation = table.Column<string>(type: "TEXT", nullable: true),
                     StartDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     TrackingDaysNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     IsFinished = table.Column<bool>(type: "INTEGER", nullable: false)
